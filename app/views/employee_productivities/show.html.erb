@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @employee_productivity.device_id %>
+</p>
+
+<p>
+  <strong>Device active:</strong>
+  <%= @employee_productivity.device_active %>
+</p>
+
+<p>
+  <strong>Axis data:</strong>
+  <%= @employee_productivity.axis_data %>
+</p>
+
+<p>
+  <strong>Emp activity:</strong>
+  <%= @employee_productivity.emp_activity %>
+</p>
+
+<p>
+  <strong>Idle:</strong>
+  <%= @employee_productivity.idle %>
+</p>
+
+<p>
+  <strong>Pick:</strong>
+  <%= @employee_productivity.pick %>
+</p>
+
+<%= link_to 'Edit', edit_employee_productivity_path(@employee_productivity) %> |
+<%= link_to 'Back', employee_productivities_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Part code:</strong>
+  <%= @weight_calculator.part_code %>
+</p>
+
+<p>
+  <strong>Wpp:</strong>
+  <%= @weight_calculator.wpp %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @weight_calculator.count %>
+</p>
+
+<p>
+  <strong>Idm:</strong>
+  <%= @weight_calculator.idm %>
+</p>
+
+<p>
+  <strong>Mpq:</strong>
+  <%= @weight_calculator.mpq %>
+</p>
+
+<%= link_to 'Edit', edit_weight_calculator_path(@weight_calculator) %> |
+<%= link_to 'Back', weight_calculators_path %>

@@ -1,0 +1,53 @@
+<%= form_for(@iot_datum) do |f| %>
+  <% if @iot_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@iot_datum.errors.count, "error") %> prohibited this iot_datum from being saved:</h2>
+
+      <ul>
+      <% @iot_datum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :workbench_number %><br>
+    <%= f.number_field :workbench_number, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :part_number %><br>
+    <%= f.text_field :part_number, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :target %><br>
+    <%= f.number_field :target, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :lot_size %><br>
+    <%= f.number_field :lot_size, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :employee_name %><br>
+    <%= f.text_field :employee_name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :employee_id %><br>
+    <%= f.number_field :employee_id, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :shift %><br>
+    <%= f.text_field :shift, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :device_id %><br>
+    <%= f.number_field :device_id, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :count %><br>
+    <%= f.number_field :count, class: 'form-control' %>
+  </div>
+  <div class="form-group actions">
+    <%= f.submit 'Submit', :class => 'btn btn-lg btn-success btn-block' %>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Workbench number</Data></Cell>
+        <Cell><Data ss:Type="String">Part number</Data></Cell>
+        <Cell><Data ss:Type="String">Target</Data></Cell>
+        <Cell><Data ss:Type="String">Lot Size</Data></Cell>
+        <Cell><Data ss:Type="String">Employee Name</Data></Cell>
+        <Cell><Data ss:Type="String">Employee ID</Data></Cell>
+        <Cell><Data ss:Type="String">Shift</Data></Cell>
+        <Cell><Data ss:Type="String">Device ID</Data></Cell>
+        <Cell><Data ss:Type="String">Count</Data></Cell>
+        <Cell><Data ss:Type="String">Status</Data></Cell>
+      <Row>
+    <% @data.each do |d| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= d.id %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= d.workbench_number %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= d.part_number %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= d.target %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= d.lot_size %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= d.employee_name %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= d.employee_id %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= d.device_id %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= d.count %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= d.status %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

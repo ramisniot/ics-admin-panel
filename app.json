@@ -1,0 +1,23 @@
+{
+  "name": "Sensors Admin Panel",
+  "description": "Starter application for an Admin Panel for Arduino sensors",
+  "logo": "https://www.arduino.cc/en/uploads/Trademark/ArduinoCommunityLogo.png",
+  "repository": "https://github.com/dreamingechoes/sensors_admin_panel",
+  "keywords": [
+    "starter",
+    "Ruby",
+    "Rails",
+    "Grape",
+    "API",
+    "Grape Swagger",
+    "Admin Panel",
+    "Sensors",
+    "Arduino"
+  ],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate && bundle exec rake db:seed"
+  },
+  "env": {
+    "RAILS_ENV": "production"
+  }
+}

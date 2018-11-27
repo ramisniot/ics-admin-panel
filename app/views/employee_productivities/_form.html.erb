@@ -1,0 +1,41 @@
+<%= form_for(@employee_productivity) do |f| %>
+  <% if @employee_productivity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employee_productivity.errors.count, "error") %> prohibited this employee_productivity from being saved:</h2>
+
+      <ul>
+      <% @employee_productivity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :device_id %><br>
+    <%= f.number_field :device_id %>
+  </div>
+  <div class="field">
+    <%= f.label :device_active %><br>
+    <%= f.text_field :device_active %>
+  </div>
+  <div class="field">
+    <%= f.label :axis_data %><br>
+    <%= f.text_field :axis_data %>
+  </div>
+  <div class="field">
+    <%= f.label :emp_activity %><br>
+    <%= f.text_field :emp_activity %>
+  </div>
+  <div class="field">
+    <%= f.label :idle %><br>
+    <%= f.text_field :idle %>
+  </div>
+  <div class="field">
+    <%= f.label :pick %><br>
+    <%= f.text_field :pick %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,115 @@
+<style type="text/css">
+  .col-lg-3 {
+    width: 33%;
+    font-size: 20px;
+}
+</style>
+<!-- /.row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-bullseye fa-3x"></i>
+                                    <!-- <i class="fa fa-thermometer fa-5x"></i>
+                                    <i class="fa fa-chip fa-5x"></i> -->
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><%#= @target.to_i %>
+                                      <% @yearly.each do |pr| %>
+                                        <%= pr.target %>
+                                      <% end %>
+                                    </div>
+                                    <div>Target</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a> -->
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-check fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><%#= @count_actual.to_i %>
+                                      <% @yearly.each do |pr| %>
+                                        <%= pr.actual %>
+                                      <% end %>
+                                    </div>
+                                    <div>Actual</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a> -->
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-chevron-up fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">
+                                    <%#= number_with_precision(@percentage, :precision => 2) %> <% @yearly.each do |pr| %>
+                                     <%= pr.progress %>
+                                     <% end %>
+                                     % 
+                                    </div>
+
+                                    <div>Progress</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a> -->
+                    </div>
+                </div>
+                 <!-- <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-eye-slash fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><%#= @inactive_devices.count %></div>
+                                    <div>Shift: 1</div>
+                                    <div id="time">
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a> -->
+                    </div>
+                </div>
+            </div>
+<%#= render 'detail_board' %>

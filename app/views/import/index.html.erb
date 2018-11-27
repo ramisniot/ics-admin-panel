@@ -1,0 +1,15 @@
+<% content_for :panel_heading do %>Master Upload<% end %>
+<h1>Upload the Data</h1>
+<p id="notice"><%#= notice %></p>
+<p>
+  Download:
+  <%= link_to "Download Planner Template", import_index_path(format: "csv") %> |
+  <%#= link_to "Download Parts Template", parts_import_index_path(format: "csv") %>
+</p>
+
+
+<h2>Import Data</h2>
+<%= form_tag import_import_index_path, multipart: true do %>
+	<%= select_tag 'select', options_for_select(['Select the Master','Planner','Parts Master', 'Workbench Master','Shift Master']), class: 'btn btn-info' %> | <%= file_field_tag :file, class: 'btn btn-info' %><br>
+  <%= submit_tag "Import", class: 'btn btn-success' %>
+<% end %>

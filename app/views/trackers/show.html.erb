@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Wb:</strong>
+  <%= @tracker.wb_id %>
+</p>
+
+<p>
+  <strong>Part code:</strong>
+  <%= @tracker.part_code %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @tracker.employee_id %>
+</p>
+
+<p>
+  <strong>Shift:</strong>
+  <%= @tracker.shift %>
+</p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @tracker.device_id %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @tracker.count %>
+</p>
+
+<%= link_to 'Edit', edit_tracker_path(@tracker) %> |
+<%= link_to 'Back', trackers_path %>

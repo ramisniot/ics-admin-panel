@@ -1,0 +1,76 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require font-awesome
+ *= require bootstrap_sb_admin_base_v2
+ *= require bootstrap-datepicker
+ *= require bootstrap-datepicker3
+ *= require daterangepicker
+ *= require_self
+ */
+
+
+.login-panel {
+  margin-top: 12px;
+}
+
+.action-buttons {
+  text-align: right;
+}
+
+table.dataTable thead > tr > th {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+
+.green {
+    color: green;
+    font-weight: bold;
+    /*background: green;*/
+}
+
+input[type="file"] {
+    display: inline-block;
+}
+
+/*
+.yellow {
+    color: yellow;
+    background: yellow;
+}
+
+.red {
+    color: white;
+    background: #1598a9;
+} */
+
+#ct {
+font-weight: bold;
+}
+
+.highcharts-yaxis-grid .highcharts-grid-line {
+	display: none;
+}
+
+.img-responsive {
+    display: block;
+    /* max-width: 100%; */
+    height: 50px;
+}
+
+/*
+.background_image {
+    background: image-url('logistics-banner-1.jpg');
+    background-size: 1386px;
+} */

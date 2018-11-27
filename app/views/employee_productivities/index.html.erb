@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Employee Productivities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>Device active</th>
+      <th>Axis data</th>
+      <th>Emp activity</th>
+      <th>Idle</th>
+      <th>Pick</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employee_productivities.each do |employee_productivity| %>
+      <tr>
+        <td><%= employee_productivity.device_id %></td>
+        <td><%= employee_productivity.device_active %></td>
+        <td><%= employee_productivity.axis_data %></td>
+        <td><%= employee_productivity.emp_activity %></td>
+        <td><%= employee_productivity.idle %></td>
+        <td><%= employee_productivity.pick %></td>
+        <td><%= link_to 'Show', employee_productivity %></td>
+        <td><%= link_to 'Edit', edit_employee_productivity_path(employee_productivity) %></td>
+        <td><%= link_to 'Destroy', employee_productivity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Employee productivity', new_employee_productivity_path %>

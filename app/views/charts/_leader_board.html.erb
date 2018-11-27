@@ -1,0 +1,82 @@
+<%= render 'time_update' %>
+<!--/.col-lg-6 -->
+<div class="col-lg-6" style="width: 101%;">
+	<div class="panel panel-success">
+		<div class="panel-heading" style="border-color: #5cb85c;color: white;background-color: #5cb85c;"><h3 class="panel-title" style="text-align: center;">LEADER BOARD</h3></div>
+			<br>	<!-- /.panel-heading -->
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h5 class="panel-title" style="text-align: center;">Employee VS Completed</h5>
+					<!-- <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span> -->
+				</div>
+				<div class="panel-body">
+					<table id="lb_cmp-pills" class="display table table-striped" cellspacing="0" width="95%">
+						<thead>
+							<tr>
+								<th>Employee Name</th>
+								<th>WorkBench</th>
+								<th>Part Code</th>
+								<th>Parts Completed</th>
+								<th>Rank</th>
+								<th colspan="3"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<% if @lb_result_cmp %>
+								<% @lb_result_cmp.each do |date| %>
+								<tr>
+									<td><%= date.employee_name %></td>
+									<td><%= date.workbench_number %></td>
+									<td><%= date.part_number %></td>
+									<td><%= date.count %></td>
+									<td><%= date.row_number %></td>
+								<% end %>
+								</tr> 
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h5 class="panel-title" style="text-align: center;">Employee VS Running</h5>
+					<!-- <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span> -->
+				</div>
+				<div class="panel-body">
+					<table id="lb_pro-pills" class="display table table-striped" cellspacing="0" width="95%">
+						<thead>
+							<tr>
+								<th>Employee Name</th>
+								<th>WorkBench</th>
+								<th>Part Code</th>
+								<th>Target</th>
+								<th>Parts Running</th>
+								<!-- <th>Rank</th> -->
+								<th colspan="3"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<% if @lb_result_pro %>
+								<% @lb_result_pro.each do |date| %>
+								<tr>
+									<td><%= date.employee_name %></td>
+									<td><%= date.workbench_number %></td>
+									<td><%= date.part_number %></td>
+									<td><%= date.target %></td>
+									<td><%= date.count %></td>
+									<td><%#= date.rank %></td>
+								<% end %>
+								</tr> 
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+		</div>
+	</div>
+	</div>
+	</div>
+<!-- /.col-lg-6 -->

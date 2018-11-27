@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Asn:</strong>
+  <%= @bar_code.asn %>
+</p>
+
+<p>
+  <strong>Part code:</strong>
+  <%= @bar_code.part_code %>
+</p>
+
+<p>
+  <strong>Qty:</strong>
+  <%= @bar_code.qty %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @bar_code.date %>
+</p>
+
+<p>
+  <strong>Lot size:</strong>
+  <%= @bar_code.lot_size %>
+</p>
+
+<p>
+  <strong>Target:</strong>
+  <%= @bar_code.target %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @bar_code.location %>
+</p>
+
+<%= link_to 'Edit', edit_bar_code_path(@bar_code) %> |
+<%= link_to 'Back', bar_codes_path %>

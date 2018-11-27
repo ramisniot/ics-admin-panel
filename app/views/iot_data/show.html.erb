@@ -1,0 +1,67 @@
+<% content_for(:page_header) do %>
+  <%= "IoT Data" %>
+<% end %>
+<% content_for :panel_heading do %><% end %>
+<p id="notice"><%= notice %></p>
+<div id='printBody'>
+<p>
+  <strong>Workbench number:</strong>
+  <%= @iot_datum.workbench_number %>
+</p>
+
+<p>
+  <strong>Part number:</strong>
+  <%= @iot_datum.part_number %>
+</p>
+
+<p>
+  <strong>Target:</strong>
+  <%= @iot_datum.target %>
+</p>
+
+<p>
+  <strong>Lot size:</strong>
+  <%= @iot_datum.lot_size %>
+</p>
+
+<!-- <p>
+  <strong>Employee name:</strong>
+  <%= @iot_datum.employee_name %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @iot_datum.employee_id %>
+</p> -->
+
+<p>
+  <strong>Shift:</strong>
+  <%= @iot_datum.shift %>
+</p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @iot_datum.device_id %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @iot_datum.count %>
+</p>
+</div>
+
+<%= link_to iot_data_path, :onclick=>"PrintDiv();", class: 'btn btn-info btn-lg'  do %>
+    <i class="fa fa-print"></i>
+<% end %>
+
+<script type="text/javascript">     
+  function PrintDiv() {    
+   var divToPrint = document.getElementById('printBody');
+   var popupWin = window.open('', '_blank','width=800,height=800');
+   // var popupWin window.open ("", "_blank","location=1,status=1,scrollbars=1, width=100,height=100");
+   
+   popupWin.document.open();
+   popupWin.document.write('<html><body onload="window.print()">' + printBody.innerHTML + '</html>');
+    popupWin.document.close();
+  }
+</script>
