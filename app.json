@@ -2,7 +2,7 @@
   "name": "Sensors Admin Panel",
   "description": "Starter application for an Admin Panel for Arduino sensors",
   "logo": "https://www.arduino.cc/en/uploads/Trademark/ArduinoCommunityLogo.png",
-  "repository": "https://github.com/dreamingechoes/sensors_admin_panel",
+  "stack": "heroku-16",
   "keywords": [
     "starter",
     "Ruby",
@@ -19,5 +19,5 @@
   },
   "env": {
     "RAILS_ENV": "production"
-  }
+  },
 }
