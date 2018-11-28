@@ -81,5 +81,3 @@ pickle-email-*.html
 .powenv
 
 # tilde files are usually backup files from a text editor
-*~
-/bin/
