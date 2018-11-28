@@ -31,13 +31,13 @@ development:
   host: localhost
   port: 5432
 
-production:
-  <<: *default
-  database: ics_admin_panel
-  username: rails_rami
-  password: railsrami
-  host: localhost
-  port: 5432   
+# production:
+#   <<: *default
+#   database: ics_admin_panel
+#   username: rails_rami
+#   password: railsrami
+#   host: localhost
+#   port: 5432   
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
