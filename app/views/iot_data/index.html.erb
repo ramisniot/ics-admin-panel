@@ -1,70 +1,26 @@
-<%# content_for(:page_header) do %>
-  <%#= "List of IoT Data" %>
-<%# end %>
-<style type="text/css">
-  /*This css will only works when you print*/
-/*@media print {
-  /*body {
-    background: #FFF;
- }*/
- @media print {
-  body {
-    background-color: #FFF;
-  }
-
-  #container {
-    width: auto;
-    margin: 0;
-    padding: 0;
-    border: none;
-  }
-  
-  #line_items {
-    page-break-before: always;
-  }
-  
-  #pdf_link {
-    display: none;
-  }
-}
-}
-
-</style>
 <% content_for :panel_heading do %>Workbench Planner<% end %>
 <p id="notice"><%= notice %></p>
 
 <%= render 'layouts/boards' %>
 
 <div class="timer" style="float: right;width: 495px;">
-  <!-- <div class="panel panel-info"> -->
-      <!-- <div class="panel-heading"> -->
         <div class="row">
-          <!-- <div class="col-xs-3" style="text-align: right;">
-            <i class="fa fa-clock-o fa-3x"></i>
-          </div> -->
           <div class="col-xs-10 text-right" style="width: 97%;">
             
             <div class="huge" style="font-size: 30px;">
               <div id="ruby_time" style="float: right;font-weight: bold;color: #093f88;">
-                <%#= (Time.zone.now).strftime("%d-%m-%Y %I:%M:%S %p") %>
                 <%= (Time.zone.now).strftime("%d-%m-%Y %I:%M %p") %>
               </div>
             </div>
-            <!-- <div>Actual</div> -->
           </div>
         </div>
-      <!-- </div> -->
-  <!-- </div> -->
 </div>
 <!-- /.col-lg-6 -->
 <div class="col-lg-6" style="width: 100%;">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <!-- Pill Tabs -->
         </div>
-        <!-- /.panel-heading -->
         <div class="panel-body">
-            <!-- Nav tabs -->
             <ul class="nav nav-pills">
                 <li class="btn btn-outline btn-primary" style="margin-right: 25px;"><a href="#home-pills" data-toggle="tab">YET TO START</a>
                 </li>
@@ -72,15 +28,9 @@
                 </li>
                 <li class="btn btn-outline btn-success" style="margin-right: 25px;"><a href="#messages-pills" data-toggle="tab">Completed Parts</a>
                 </li>
-                <!-- <li class="btn btn-outline btn-primary"><a href="#settings-pills" data-toggle="tab"><%#= (Time.now).strftime("%d-%m-%Y %I:%M:%S %p") %></a>
-                  
-                </li> -->
             </ul>
-
-            <!-- Tab panes -->
             <div class="tab-content">
                 <div class="tab-pane fade in active table-responsive" id="home-pills">
-                    <!-- <h4>Home Tab</h4> -->
                     <p>
             <table id="iottt" class="display table" cellspacing="0" width="95%">
               <thead>
@@ -92,9 +42,7 @@
                   <th>Part No</th>
                   <th>Target</th>
                   <th>Lot size</th>
-                  <!-- <th>Device</th> -->
                   <th>Count</th>
-                  <!-- <th>Status</th> -->
                   <th>Actions</th>
                   <th colspan="3"></th>
                 </tr>
@@ -120,9 +68,7 @@
                     <td><%= iot_datum.part_number %></td>
                     <td><%= iot_datum.target %></td>
                     <td><%= iot_datum.lot_size %></td>
-                    <!-- <td><%#= iot_datum.device_id %></td> -->
                     <td id="ct"><%= iot_datum.count %></td>
-                    <!-- <td><%#= iot_datum.status %></td> -->
                     <td class="action-buttons">
                       <% if iot_datum.status == 'YTS'  %> 
                       <%= link_to iot_datum_process_start_path(iot_datum), class: 'btn btn-info'  do %>
@@ -135,16 +81,8 @@
                       <% elsif iot_datum.status == 'Processing' %>  
                       <%= link_to '', class: 'btn btn-warning btn-lg'  do %>
                       <i class="fa fa-refresh fa-spin"></i>
-                      <!-- <i class="fa fa-refresh fa-spin fa-2x fa-fw"></i> -->
-
                       <% end %>
-
                       <% end %> 
-                      <%#= link_to 'Print', iot_datum_print_pdf_path(iot_datum), :onclick => 'window.print();return false;'%>
-                      
-                      <!-- <p id="pdf_link"><%#= link_to "Download Invoice (PDF)", iot_datum_path(iot_datum, :format => "pdf") %></p> -->
-                             
-                      <%#= link_to 'Edit', edit_iot_datum_path(iot_datum), class: 'btn btn-primary' %>
                       <%= link_to iot_datum_path(iot_datum), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
                       <i class="fa fa-times"></i>
                       <% end %>
@@ -153,7 +91,6 @@
                   
                 <% end %>
               <% end %>
-                <!-- Total <%#= @iot_data.count %> Parts are Processing -->
               </tbody>
             </table>
 
@@ -161,7 +98,6 @@
               </p>
           </div>
           <div class="tab-pane fade" id="profile-pills">
-              <!-- <h4>Profile Tab</h4> -->
               <p>
                 <table id="iottt_1" class="display table" cellspacing="0" width="95%">
               <thead>
@@ -174,8 +110,6 @@
                   <th>Target</th>
                   <th>Lot size</th>
                   <th>Count</th>
-                  <!-- <th>Start Time</th>
-                  <th>End Time</th> -->
                   <th>Actions</th>
                   <th colspan="3"></th>
                 </tr>
@@ -201,8 +135,6 @@
                     <td><%= iot_datum.target %></td>
                     <td><%= iot_datum.lot_size %></td>
                     <td id="ct"><%= iot_datum.count %></td>
-                    <!-- <td><%#= iot_datum.created_at %></td>
-                    <td><%#= iot_datum.updated_at %></td> -->
                     <td class="action-buttons">
                       <% if iot_datum.status == 'YTS'  %> 
                       <%= link_to iot_datum_process_start_path(iot_datum), class: 'btn btn-danger btn-lg '  do %>
@@ -215,15 +147,8 @@
                       <% elsif iot_datum.status == 'Processing' %>  
                       <%= link_to '', class: 'btn btn-warning btn-lg'  do %>
                       <i class="fa fa-refresh fa-spin"></i>
-                      <!-- <i class="fa fa-refresh fa-spin fa-2x fa-fw"></i> -->
                       <% end %>
-                      <%#= link_to 'Print', iot_datum_path(iot_datum) %>
                       <% end %> 
-                      <%#= link_to iot_datum_path(iot_datum), class: 'btn btn-info btn-lg'  do %>
-                        <!-- <i class="fa fa-print"></i> -->
-                      <%# end %>
-                             
-                      <%#= link_to 'Edit', edit_iot_datum_path(iot_datum), class: 'btn btn-primary' %>
                       <%= link_to iot_datum_path(iot_datum), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-lg' do %>
                       <i class="fa fa-times"></i>
                       <% end %>
@@ -232,8 +157,7 @@
                   
                 <% end %>
               <% end %>
-                <!-- Total <%#= @iot_data.count %> Parts are Processing -->
-              </tbody>
+            </tbody>
             </table>
 
             <br>
@@ -241,7 +165,6 @@
               </p>
           </div>
           <div class="tab-pane fade" id="messages-pills">
-              <!-- <h4>Messages Tab</h4> -->
               <p>
                 <table id="iottt_2" class="display table" cellspacing="0" width="95%">
                 <span id ="ds" style="float: right;margin-bottom: 10px;"><%= link_to iot_datum_download_report_path('ds', format: "csv"), class: 'btn btn-success'  do %>
@@ -254,14 +177,11 @@
                   <th>Shift</th>
                   <th>Part No</th>
                   <th>Target</th>
-                  <!-- <th>Lot size</th> -->
-                  <!-- <th>Device</th> -->
                   <th>Count</th>
                   <th>Date</th>
                   <th>Start Time</th>
                   <th>End Time</th>
                   <th>Duration</th>
-                  <!-- <th>Actions</th> -->
                   <th colspan="3"></th>
                 </tr>
               </thead>
@@ -283,49 +203,24 @@
                     <td><%= iot_datum.shift %></td>
                     <td><%= iot_datum.part_number %></td>
                     <td><%= iot_datum.target %></td>
-                    <!-- <td><%#= iot_datum.lot_size %></td> -->
-                    <!-- <td><%#= iot_datum.device_id %></td> -->
                     <td id="ct"><%= iot_datum.count %></td>
                     <td><%= (iot_datum.created_at).strftime("%d-%m-%Y") %></td>
                     <td><%= (iot_datum.created_at).strftime("%I:%M:%S %p") %></td>
                     <td><%= (iot_datum.updated_at).strftime("%I:%M:%S %p") %></td>
                     <% d = @duration.find_by(part_number: (iot_datum.part_number), device_id: (iot_datum.device_id)) %>
                     <td><%= ((d.duration).to_datetime).strftime("%H:%M:%S") %></td>
-                    <!-- <td class="action-buttons">
-                      <%# if iot_datum.status == 'YTS'  %> 
-                      <%#= link_to iot_datum_process_start_path(iot_datum), class: 'btn btn-danger btn-lg '  do %>
-                      <i class="glyphicon glyphicon-play"></i>
-                      <%# end %>
-                      <%# elsif iot_datum.status == 'Process Completed' %>  
-                      <%#= link_to '', class: 'btn btn-success btn-lg'  do %>
-                      <i class="glyphicon glyphicon-ok"></i>
-                      <%# end %>
-                      <%# elsif iot_datum.status == 'Processing' %>  
-                      <%#= link_to '', class: 'btn btn-warning btn-lg'  do %>
-                      <i class="fa fa-refresh fa-spin"></i>
-                      <i class="fa fa-refresh fa-spin fa-2x fa-fw"></i>
-                      <%# end %>
-                      <%# end %> 
-                             
-                      <%#= link_to 'Edit', edit_iot_datum_path(iot_datum), class: 'btn btn-primary' %>
-                      <%#= link_to 'Destroy', iot_datum, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-                    </td> -->
                   </tr>
                   
                 <% end %>
                <% end %> 
-                <!-- Total <%#= @iot_data.count %> Parts are Processing -->
+                
               </tbody>
             </table>
 
             <br>
               </p>
               </p>
-          </div>
-                                <div class="tab-pane fade" id="settings-pills">
-                                    <!-- <h4>Settings Tab</h4> -->
-                                    <p></p>
-                                </div>
+          </div>     
                             </div>
                         </div>
                         <!-- /.panel-body -->
@@ -333,8 +228,6 @@
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-6 -->
-
-<%= link_to 'New Planner', new_iot_datum_path %>
 
 <% content_for(:extra_scripts) do %>
   
@@ -346,8 +239,6 @@
       
       setInterval( function () {
         $("#iottt_1").load(location.href + " #iottt_1");
-        // $("#ruby_time").load(location.href + " #ruby_time");
-        // console.log('reloaded'); 
         
       }, 5000 ); // load table in every 5 sec
       
@@ -356,14 +247,6 @@
         // console.log('reloaded'); 
       }, 60000 );
     });
-
-    function PrintDiv() {    
-       var divToPrint = document.getElementById('printBody');
-       var popupWin = window.open('', '_blank', 'width=1300,height=1300');
-       popupWin.document.open();
-       popupWin.document.write('<html><body onload="window.print()">' + printBody.innerHTML + '</html>');
-       popupWin.document.close();
-    }
   </script>
 <% end %>
 

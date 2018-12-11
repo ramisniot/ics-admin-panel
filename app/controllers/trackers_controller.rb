@@ -14,28 +14,11 @@ class TrackersController < ApplicationController
     # render js: "alert('The number is: #{params[:id]}')"
   end
 
-  # def totals
-  #   a = rand(0..26)
-  #   b = rand(0..26)
-
-  #   value = a + b
-
-  #   # puts data
-  #   # value = rand(0..26) # Some expensive database query
-  #   render js: "$('#dashboard-totals').html('#{value}')"
-  # end
-
-  # GET /trackers/new
   def new
     @tracker = Tracker.new
   end
 
   def search
-    puts params[:created_at]
-    puts params[:updated_at]
-
-    
-    # @data = Tracker.order(:id)
     @track_filter = Tracker.select("wb_id, part_code, employee_id, shift, device_id, count, target, to_char(created_at,'yyyy-mm-dd HH12:MI:SS') as datetime").where("to_char(created_at,'yyyy-mm-dd') >= ? and to_char(created_at,'yyyy-mm-dd') <= ?", params[:created_at],params[:updated_at]).order(:part_code)
     respond_to do |format|
       format.csv { send_data @track_filter.to_csv, filename: 'tracker_report.csv' }

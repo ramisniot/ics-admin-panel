@@ -1,59 +1,13 @@
 <% content_for :panel_heading do %>Analytics
-<!-- <div id="time" style="float: right;font-weight: bold;">
-</div> -->
-<!-- <div id="ruby_time" style="float: right;font-weight: bold;">
-  <%#= (Time.now).strftime("%d-%m-%Y %I:%M:%S %p") %>
-</div> -->
 <% end %>
-
-<%#= line_chart Tracker.group_by_day(:created_at).count, colors: ["#b00", "#666"], legend: "bottom" %>
-
-<%#= line_chart Tracker.group_by_week(:created_at).count, colors: ["#b00", "#666"], legend: "bottom" %>
-<%#= line_chart Tracker.group_by_month(:created_at).count, colors: ["#b00", "#666"], legend: "bottom" %>
-<%#= bar_chart Tracker.group_by_day(:created_at).count, colors: ["#b00", "#666"], prefix: "$" %>
-<%#= pie_chart Tracker.group_by_day(:created_at).count, colors: ["#b00", "#666"] %>
-<%#= column_chart Tracker.group_by_day(:created_at).count, colors: ["#b00", "#666"] %>
-<%#= render 'ratio_calculator' %>
-
 <%= render 'boards' %>
-<%#= render 'widgets' %>
 <%= render 'leader_board' %>
 <%= render 'detail_board' %>
 
-
-
-<!-- <div class="timer" style="float: right;width: 353px;">
-  <div class="panel panel-info">
-      <div class="panel-heading">
-        <div class="row">
-          <div class="col-xs-3">
-            <i class="fa fa-clock-o fa-4x"></i>
-          </div>
-          <div class="col-xs-9 text-right">
-            <div class="huge">
-              <div id="ruby_time" style="float: right;font-weight: bold;">
-                <%#= (Time.now).strftime("%d-%m-%Y %I:%M:%S %p") %>
-              </div>
-            </div>
-            <div>Actual</div>
-          </div>
-        </div>
-      </div>
-  </div>
-</div> -->
-
 <div style="height: 400px; margin: 0 auto">
-    <div id="container-speed" style="width: 300px; height: 200px; float: left"></div>
-    <div id="container-rpm" style="width: 300px; height: 200px; float: left"></div>
-    
-    <!-- <div id="container-rpm1" style="width: 300px; height: 200px; float: left"></div> -->
+  <div id="container-speed" style="width: 300px; height: 200px; float: left"></div>
+  <div id="container-rpm" style="width: 300px; height: 200px; float: left"></div>
 </div>
-
-
-<%#= line_chart Tracker.group(:employee_id).group_by_day(:created_at).count %>
-<%#= bar_chart Tracker.group(:part_code).group_by_week(:created_at).count, min: 0, max: 150 %>
-<%#= line_chart Tracker.group(:part_code).group_by_day(:created_at).count %>
-<%#= line_chart @data  %>
 
 <script type="text/javascript">
 
@@ -61,59 +15,18 @@ $(document).ready(function() {
       $('#day_wise').DataTable({ responsive: true, ordering: true });
       $('#ds_wise').DataTable({ responsive: true, ordering: true });
       $('#sp_wise').DataTable({ responsive: true, ordering: true });
-      // $('#lb_cmp-pills').DataTable({ responsive: true, ordering: true });
-      // $('#lb_pro-pills').DataTable({ responsive: true, ordering: true });
-      
+
       setInterval( function () {
         $("#lb_cmp-pills").load(location.href + " #lb_cmp-pills");
         $("#lb_pro-pills").load(location.href + " #lb_pro-pills");
-        // $("#container-speed").load(location.href + " #container-speed");
-        // $("#container-rpm").load(location.href + " #container-rpm");
-        // $("#ruby_time").load(location.href + " #ruby_time");
-        console.log('reloaded'); 
-        
       }, 5000 );
     });
 
-// (function () {
-//     function checkTime(i) {
-//         return (i < 10) ? "0" + i : i;
-//     }
-
-//     function startTime() {
-//         var today = new Date(),
-//             d = '<%#= (Time.now).strftime("%d-%m-%Y %I:%M:%S %p") %>'
-//             h = checkTime(today.getHours()),
-//             m = checkTime(today.getMinutes()),
-//             s = checkTime(today.getSeconds());
-//         document.getElementById('time').innerHTML = d + "  " + h + ":" + m + ":" + s;
-//         t = setTimeout(function () {
-//             startTime()
-//         }, 500);
-//     }
-//     startTime();
-// })();
-
-  setInterval( function () {
+      setInterval( function () {
         $("#ruby_time").load(location.href + " #ruby_time");
         console.log('reloaded'); 
         
       }, 60000 );
-
-//   $(document).on('click', '.panel-heading span.clickable', function(e){
-//     var $this = $(this);
-//   if(!$this.hasClass('panel-collapsed')) {
-//     $this.parents('.panel').find('.panel-body').slideUp();
-//     $this.addClass('panel-collapsed');
-//     $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
-    
-//   } else {
-//     $this.parents('.panel').find('.panel-body').slideDown();
-//     $this.removeClass('panel-collapsed');
-//     $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
-    
-//   }
-// })
 
   var gaugeOptions = {
 
@@ -247,42 +160,4 @@ var chartRpm1 = Highcharts.chart('container-rpm1', Highcharts.merge(gaugeOptions
     }]
 
 }));
-
-// Bring life to the dials
-// setInterval(function () {
-//     // Speed
-//     var point,
-//         newVal,
-//         inc;
-
-//     if (chartSpeed) {
-//         point = chartSpeed.series[0].points[0];
-//         inc = Math.round((Math.random() - 0.5) * 100);
-//         newVal = point.y + inc;
-
-//         if (newVal < 0 || newVal > 200) {
-//             newVal = point.y - inc;
-//         }
-
-//         point.update(newVal);
-//     }
-
-//     // RPM
-//     if (chartRpm) {
-//         point = chartRpm.series[0].points[0];
-//         inc = Math.random() - 0.5;
-//         newVal = point.y + inc;
-
-//         if (newVal < 0 || newVal > 5) {
-//             newVal = point.y - inc;
-//         }
-
-//         point.update(newVal);
-//     }
-// }, 2000);
-
-
-
-
-
 </script>

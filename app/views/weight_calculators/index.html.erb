@@ -8,11 +8,9 @@
     <div class="form-group">
       <%= form_tag wt_totals_path,method: :patch, remote: true  do %>
        <div class='input-group date' id='datetimepicker6'>
-        <%#= date_field_tag :created_at %>
         <input id="fromdate" type='text' value="" name="wpp" class="form-control" placeholder="Per Part Weight">
         </div><br>
         <div class='input-group date' id='datetimepicker7'>
-        <%#= date_field_tag :updated_at %>
         <input id="todate" type='text' value="" name="count" class="form-control" placeholder="No. of Parts">
         </div><br>
        <span><%= submit_tag 'Calculate Weight', class: 'btn btn-success' %></span> 
@@ -22,5 +20,3 @@
     <div id="dashboard-totals" style="font-size: -webkit-xxx-large;color: darkblue;font-style: italic;"></div>
   </div>
 </div> 
-
-<%#= link_to 'New Weight calculator', new_weight_calculator_path %>

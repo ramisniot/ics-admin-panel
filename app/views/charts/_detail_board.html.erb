@@ -14,12 +14,9 @@
         <li><a href="#profile-pills" data-toggle="tab">Monthly</a></li>
         <li><a href="#messages-pills" data-toggle="tab">Yearly</a></li>
        </ul>
-                            
-        <!-- Tab panes -->
         <div class="tab-content">
             <div class="tab-pane fade in active" id="home-pills">
-                                    <!-- <h4>Day Tab</h4> -->
-                                    <p>
+            <p>
             <table id="day_wise" class="display table table-responsive" cellspacing="0" width="95%">
               <thead>
                 <tr>
@@ -37,7 +34,6 @@
                 <% if @day_wise %>
                   <% @day_wise.each do |date| %>
                   <tr>
-                    <!-- <td><%#= (date.dates).strftime("%d-%m-%Y") %></td> -->
                     <td><%= date.dates %></td>
                     <td><%= date.day_name %></td>
                     <td><%= date.target %></td>
@@ -53,15 +49,12 @@
             <br>
             </p>
         </div>
-
         <div class="tab-pane fade" id="ds-pills">
-                                    <!-- <h4>Day Tab</h4> -->
-                                    <p>
+          <p>
             <table id="ds_wise" class="display table" cellspacing="0" width="95%">
             <span id ="ds" style="float: right;margin-bottom: 10px;"><%= link_to chart_download_report_path('ds', format: "csv"), class: 'btn btn-success'  do %>
               <i class="fa fa-download"></i>
             <% end %></span>
-            
               <thead>
                 <tr>
                   <th>Date</th>
@@ -74,13 +67,10 @@
                   <th colspan="3"></th>
                 </tr>
               </thead>
-
               <tbody>
-                
                 <% if @ds_wise %>
                   <% @ds_wise.each do |date| %>
                   <tr>
-                    <!-- <td><%#= (date.dates).strftime("%d-%m-%Y") %></td> -->
                     <td><%= date.dates %></td>
                     <td><%= date.day_name %></td>
                     <td><%= date.workbench %></td>
@@ -97,15 +87,12 @@
             <br>
             </p>
         </div>
-
         <div class="tab-pane fade" id="sp-pills">
-                                    <!-- <h4>Day Tab</h4> -->
-                                    <p>
+          <p>
             <table id="sp_wise" class="display table" cellspacing="0" width="95%">
             <span id ="sp" style="float: right;margin-bottom: 10px;"><%= link_to chart_download_report_path('sp', format: "csv"), class: 'btn btn-success'  do %>
               <i class="fa fa-download"></i>
             <% end %></span>
-            
               <thead>
                 <tr>
                   <th>Date</th>
@@ -113,13 +100,10 @@
                   <th>Workbench</th>
                   <th>Part Number</th>
                   <th>Duration</th>
-                  <!-- <th>Progress %</th> -->
                   <th colspan="3"></th>
                 </tr>
               </thead>
-
               <tbody>
-                
                 <% if @sp_wise %>
                   <% @sp_wise.each do |date| %>
                   <tr>
@@ -131,16 +115,14 @@
                   <% end %>
                   </tr> 
                 <% end %>
-                
               </tbody>
             </table>
             <br>
             </p>
         </div>
-                                <div class="tab-pane fade" id="profile-pills">
-                                    <!-- <h4>Profile Tab</h4> -->
-                                    <p>
-                                      <table id="day_wise" class="display table" cellspacing="0" width="95%">
+        <div class="tab-pane fade" id="profile-pills">
+          <p>
+            <table id="day_wise" class="display table" cellspacing="0" width="95%">
               <thead>
                 <tr>
                   <th>Month</th>
@@ -166,14 +148,12 @@
                 
               </tbody>
             </table>
-
             <br>
-                                    </p>
-                                </div>
-                                <div class="tab-pane fade" id="messages-pills">
-                                    <!-- <h4>Messages Tab</h4> -->
-                                    <p>
-                                      <table id="day_wise" class="display table" cellspacing="0" width="95%">
+          </p>
+        </div>
+        <div class="tab-pane fade" id="messages-pills">
+          <p>
+            <table id="day_wise" class="display table" cellspacing="0" width="95%">
               <thead>
                 <tr>
                   <th>Year</th>
@@ -199,15 +179,12 @@
                 
               </tbody>
             </table>
-
             <br>
-                                    </p>
-                                </div>
-                                <div class="tab-pane fade" id="settings-pills">
-                                    <!-- <h4>Settings Tab</h4> -->
-                                  
-                                    <p>
-          <table id="day_wise" class="display table" cellspacing="0" width="95%">
+          </p>
+        </div>
+        <div class="tab-pane fade" id="settings-pills">
+          <p>
+            <table id="day_wise" class="display table" cellspacing="0" width="95%">
               <thead>
                 <tr>
                   <th>Week No.</th>
@@ -219,14 +196,11 @@
                   <th colspan="3"></th>
                 </tr>
               </thead>
-
               <tbody>
-                
                 <% if @weekly %>
                   <% @weekly.each do |date| %>
                   <tr>
                     <td><%= date.week_no %></td>
-                    <!-- <td><%#= (date.dates).strftime("%d-%m-%Y") %></td> -->
                     <td><%= date.dates %></td>
                     <td><%= date.day_name %></td>
                     <td><%= date.target %></td>
@@ -235,17 +209,11 @@
                   <% end %>
                   </tr> 
                 <% end %>
-                
               </tbody>
             </table>
-
             <br>
-                                    </p>
-                                
-                            </div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-6
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>

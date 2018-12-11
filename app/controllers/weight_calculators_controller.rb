@@ -1,5 +1,4 @@
 class WeightCalculatorsController < ApplicationController
-  # protect_from_forgery with: :null_session
   include ActionView::Helpers::NumberHelper
   protect_from_forgery :except => :totals
   before_action :set_weight_calculator, only: [:show, :edit, :update, :destroy]
@@ -8,14 +7,6 @@ class WeightCalculatorsController < ApplicationController
   # GET /weight_calculators.json
   def index
     @weight_calculators = WeightCalculator.all
-    # a = rand(0..26)
-    # b = rand(0..26)
-
-    # value = a + b
-
-    # # puts data
-    # # value = rand(0..26) # Some expensive database query
-    # render js: "$('#dashboard-totals').html('#{value}')"
   end
 
   def totals
@@ -24,18 +15,9 @@ class WeightCalculatorsController < ApplicationController
 
     if weight_per_part && count
       value = number_with_precision((weight_per_part.to_f * count.to_f), :precision => 2)
-      # value = number_to_rounded((weight_per_part.to_f * count.to_f), :precision => 2)
-      # value = number_to_currency((weight_per_part.to_f * count.to_f))
     else
       value = 0.00
     end
-    # a = rand(0..26)
-    # b = rand(0..26)
-
-    # value = a + b
-
-    # puts data
-    # value = rand(0..26) # Some expensive database query
     render js: "$('#dashboard-totals').html('#{value} Kgs')"
   end
 

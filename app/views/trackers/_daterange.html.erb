@@ -3,7 +3,6 @@
     <div class="form-group">
       <%= form_tag search_path(filename: 'trackers.csv', format: "csv") do %>
         From Date: <div class='input-group date' id='datetimepicker6'>
-        <%#= date_field_tag :created_at %>
         <input id="fromdate" type='text' value="" name="created_at" class="form-control" data-behavior="datepicker">
         
         <span class="input-group-addon">
@@ -11,7 +10,6 @@
         </span>
         </div><br>
         To Date: <div class='input-group date' id='datetimepicker7'>
-        <%#= date_field_tag :updated_at %>
         <input id="todate" type='text' value="" name="updated_at" class="form-control" data-behavior="datepicker">
         <span class="input-group-addon">
           <span class="glyphicon glyphicon-calendar"></span>

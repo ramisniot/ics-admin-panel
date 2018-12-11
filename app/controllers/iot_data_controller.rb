@@ -1,6 +1,5 @@
 class IotDataController < ApplicationController
   skip_before_filter :authenticate_user!
-  # protect_from_forgery with: :null_session
   before_action :set_iot_datum, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -78,68 +77,29 @@ class IotDataController < ApplicationController
 
   def process_start
 
-      id = params[:iot_datum_id]
-        @process_rec = IotDatum.find_by(id: id) if id
-        deviceId = @process_rec.device_id
-        part_number = @process_rec.part_number
-        
-        @iot_data = IotDatum.where("device_id = ? and status = ?", deviceId, 'YTS');
-        @uniq_data = IotDatum.where("device_id = ? and part_number = ? and status = ?", deviceId, part_number, 'Processing');
-        puts @uniq_data.count
-        puts "2 begin"
-        if @uniq_data.count == 0
+    id = params[:iot_datum_id]
+      @process_rec = IotDatum.find_by(id: id) if id
+      deviceId = @process_rec.device_id
+      part_number = @process_rec.part_number
+      
+      @iot_data = IotDatum.where("device_id = ? and status = ?", deviceId, 'YTS');
+      @uniq_data = IotDatum.where("device_id = ? and part_number = ? and status = ?", deviceId, part_number, 'Processing');
+      
+      if @uniq_data.count == 0
+          @process_rec.status = 'Processing'
+          @process_rec.save!
+          redirect_to iot_data_path, notice: 'Process Started'
+      else
+        @uniq_data.each do |u|
+          if (u.part_number == part_number && u.device_id == deviceId)
+            redirect_to iot_data_path, alert: "Part code #{part_number} is running on device No. #{deviceId}. Please Wait to complete"
+          else
             @process_rec.status = 'Processing'
             @process_rec.save!
             redirect_to iot_data_path, notice: 'Process Started'
-            puts " 0 start"
-        else
-          @uniq_data.each do |u|
-            puts u.part_number
-            puts u.device_id
-            puts part_number
-            if (u.part_number == part_number && u.device_id == deviceId)
-              puts "Validate"
-              redirect_to iot_data_path, alert: "Part code #{part_number} is running on device No. #{deviceId}. Please Wait to complete"
-            else
-              puts "other part start----"
-              @process_rec.status = 'Processing'
-              @process_rec.save!
-              redirect_to iot_data_path, notice: 'Process Started'
-              puts "other part end----"
-            end
           end
         end
-      # else
-      #   puts "-----#{seq_data.id}---seq id----"
-      #   @seq = seq_data.id + 1
-      #   puts @seq
-      #   @iot_data = IotDatum.find_by(id: @seq) 
-      #   @iot_data.status = 'Processing'
-      #   @iot_data.save!
-      # end
-
-      # device_id = @iot_data.device_id
-      # part_no = @iot_data.part_number
-      # target = @iot_data.target
-      # lot_size = @iot_data.lot_size
-      # @iot_datas = IotDatum.where("device_id = ? and part_number = ? and target = ? and lot_size = ?", device_id, part_no, target, lot_size) if @iot_data
-      # puts @iot_datas.inspect
-      # puts @iot_data.inspect
-      # render json: @iot_data
-
-      # require 'net/http'
-      # # t = Thread.start do
-      #   uri = URI('http://192.168.1.112')
-      #   res = Net::HTTP.post_form(uri, 'q' => 'ruby', 'max' => '50')
-      #   puts res.body
-      # # end
-      # # t.kill
-      
-      # respond_to do |format|
-      #   format.json { render :json, status: :created, location: @iot_data }
-      # end
-    # @iot_data = IotDatum.where("device_id = ? and count = ?", params[:device_id],params[:count]) if device_id && count
-      # redirect_to iot_data_path, notice: 'Process Started'
+      end
   end
 
   def import

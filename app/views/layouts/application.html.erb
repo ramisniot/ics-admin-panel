@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127162600-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -15,8 +14,6 @@
   <title>
     <%= content_for?(:title) ? yield(:title) : "Intelligent Counting System" %>
   </title>
-  <%#= image_tag 'tvslsl_logo4.jpg', class: "img-responsive center-block", :alt => "avatar" %>
-  
   <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Intelligent Counting System" %>">
 
   <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
@@ -26,31 +23,18 @@
   <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
-  <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-  <%#= javascript_include_tag 'jquery.min', 'moment.min', 'Chart.min', 'chartkick' %>
-  <%#= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 
 <body>
-  <!-- <span>Current time: <%= @time %></span> -->
   <div id="wrapper" class="">
     <%= render 'layouts/navbar' %>
-    <%#= render 'layouts/nav_links_for_auth' %>
   </div>
 
   <div id="page-wrapper" style="min-height: 2500px;">
     <%= render 'layouts/title' %>
-    <%#= render 'layouts/boards' %>
     <%= render 'layouts/messages' %>
-
     <div>
       <div class="panel panel-info">
         <div class="panel-heading" style="color: #074e71;background-color: #99cee8;font-weight: bold;">

@@ -7,27 +7,7 @@
       <span class="icon-bar"></span>
     </button>
     <%= image_tag 'tvslsl_logo.png', class: "img-responsive center-block", :alt => "avatar", :style => 'height: 53px;'%>
-    <%#= image_tag 'tvs_logistics_logo.jpg', class: "img-responsive center-block", :alt => "avatar" %>
-    <!-- <a class="navbar-brand" href="/">Intelligent Counting System</a> -->
   </div>
-
-  <!-- <ul class="nav navbar-top-links navbar-right pull-right">
-    <li class="dropdown">
-      <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#">
-        <i class="fa fa-user fa-fw"></i>
-        <i class="fa fa-caret-down"></i>
-      </a>
-      <ul class="dropdown-menu dropdown-user">
-        <li>
-          <%#= link_to '<i class="fa fa-user fa-fw"></i>Profile..</a>'.html_safe, user_path(current_user) %>
-        </li>
-        <li class="divider"></li>
-        <li>
-          <%#= link_to '<i class="fa fa-sign-out fa-fw"></i>Logout!</a>'.html_safe, destroy_user_session_path, :method=>'delete' %>
-        </li>
-      </ul>
-    </li>
-  </ul> -->
 
   <div class="navbar-primary sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
@@ -38,7 +18,7 @@
             Dashboard</a>
         </li>
         <li>
-          <a href="#"><i class="fa fa-th-list fa-fw"></i> ICS Menu<span class="fa arrow"></span></a>
+          <a href="#"><i class="fa fa-th-list fa-fw"></i>Menu<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level collapse">
             <li>
               <%= link_to '<i class="fa fa-video-camera fa-fw" aria-hidden="true"></i> Workbench Planner</a>'.html_safe, iot_data_path() %>
@@ -56,10 +36,7 @@
               <%= link_to '<i class="fa fa-credit-card fa-fw"></i> Weight Calculator</a>'.html_safe, weight_calculators_path() %>
             </li>
             <li>
-          <%#= link_to '<i class="fa fa-user fa-fw"></i>Profile</a>'.html_safe, user_path(current_user) %>
-            </li>
-            <li>
-          <a href="/">
+            <a href="/">
             <i class="fa fa-info-circle fa-fw"></i>
             About</a>
           </li>
@@ -71,12 +48,6 @@
             <% end %>
           </ul>
         </li>
-        
-        <%#= render 'layouts/iems' %> <!-- <li>
-          <a href="/pages/about">
-            <i class="fa  fa-info-circle fa-fw"></i>
-            About</a>
-        </li> -->
       </ul>
     </div>
   </div>
