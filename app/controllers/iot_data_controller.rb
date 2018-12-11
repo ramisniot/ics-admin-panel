@@ -1,27 +1,14 @@
 class IotDataController < ApplicationController
-  # before_filter :authenticate_user!
   skip_before_filter :authenticate_user!
   # protect_from_forgery with: :null_session
   before_action :set_iot_datum, only: [:show, :edit, :update, :destroy]
 
-  # GET /iot_data
-  # GET /iot_data.json
   def index
-    # @iot_data = IotDatum.all
-    # @iot_data_yts = IotDatum.where("status = ?", 'YTS')
-    # @iot_data_pro = IotDatum.where("status = ?", 'Processing')
-    # @iot_data_comp = IotDatum.where("status = ?", 'Process Completed')
+
     device_id = params[:device_id] if params[:device_id]
     count = params[:count] if params[:count]
     part = params[:part_number] if params[:part_number]
-
-    # @active_devices = WorkbenchMaster.where("machine_status = ?", 'A')
-    # @inactive_devices = WorkbenchMaster.where("machine_status = ?", 'IA')
-    # @completed_parts = IotDatum.where("status = ?", 'Process Completed')
-    # @processing_parts = IotDatum.where("status = ?", 'Processing')
-
-    
-      @iot_data = IotDatum.where("device_id = ? and count = ? and part_number = ?", params[:device_id],params[:count], params[:part_number]) if device_id && count && part
+    @iot_data = IotDatum.where("device_id = ? and count = ? and part_number = ?", params[:device_id],params[:count], params[:part_number]) if device_id && count && part
       
       if params[:status] && params[:device_id]
         @iot_datas = IotDatum.where("status = ? and device_id = ?", 'Processing', params[:device_id]) 
@@ -29,36 +16,25 @@ class IotDataController < ApplicationController
       end
       
     if device_id != nil && part != nil
-      puts "1 begin"
       status = 'Processing'
       @iot_dataa = IotDatum.find_by(device_id: device_id, part_number: part, status: status) 
       @iot_dataa.part_number
       target = @iot_dataa.target if @iot_dataa
       if (count.to_i <= target.to_i && @iot_dataa.status = 'Processing')
-        puts "count start"
         @iot_dataa.device_id = device_id
         @iot_dataa.count = count
-        # @iot_dataa.status = 'Processing'
         @iot_dataa.save! 
         if @iot_dataa.save
           seq_data_entry(@iot_dataa)
         end
-        puts "count end"
       else count.to_i == 0
-        # @iot_dataa.status = 'YTS'
-        # @iot_dataa.save!
-      # elsif count.to_i == target
-      #   @iot_dataa.status = 'Process Completed'
-      #   @iot_dataa.save!
         redirect_to root_url, notice: 'Process Completed'
       end
 
       if count.to_i == target
         @iot_dataa.status = 'Process Completed'
         @iot_dataa.save!
-        # process_start(@iot_dataa) 
       end
-      puts "1 end"
     end 
 
     @iot_data_yts = IotDatum.where("status = ?", 'YTS')
@@ -70,14 +46,12 @@ class IotDataController < ApplicationController
     @completed_parts = IotDatum.where("status = ?", 'Process Completed')
     @processing_parts = IotDatum.where("status = ?", 'Processing')
 
-    # @duration = Tracker.select("(max(created_at) - min(created_at)) AS duration").group("part_code")
     @duration = IotDatum.select("(updated_at - created_at) AS duration").where("status = ?", 'Process Completed')
 
     
   end
 
-  # GET /iot_data/1
-  # GET /iot_data/1.json
+  
   def show
   end
 
@@ -102,15 +76,6 @@ class IotDataController < ApplicationController
     @tracker.save!
   end
 
-  # def print_pdf
-  #   id = params[:iot_datum_id]
-  #   @print_record = IotDatum.find_by(id: id) if id
-  #     respond_to do |format|
-  #       format.pdf #{ render :json, status: :created, location: @iot_data }
-  #     end
-
-  # end
-
   def process_start
 
       id = params[:iot_datum_id]
@@ -119,10 +84,6 @@ class IotDataController < ApplicationController
         part_number = @process_rec.part_number
         
         @iot_data = IotDatum.where("device_id = ? and status = ?", deviceId, 'YTS');
-        # puts @iot_data.count
-        # @iot_data.each { |d| d.status = 'Processing'; d.save!} 
-        # puts @deviceId.inspect
-        # puts @deviceId.status
         @uniq_data = IotDatum.where("device_id = ? and part_number = ? and status = ?", deviceId, part_number, 'Processing');
         puts @uniq_data.count
         puts "2 begin"

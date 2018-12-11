@@ -5,7 +5,6 @@ class ImportController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data @data.to_csv }
-      # format.xls 
     end
 	end
 

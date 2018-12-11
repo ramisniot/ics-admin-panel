@@ -6,12 +6,6 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
   before_action :authenticate_user!
 
-  # before_action :set_time
-
-  # def set_time
-  #   @time = Time.now
-  # end
-
   def layout_by_resource
     if devise_controller?
       "devise"
