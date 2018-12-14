@@ -12,7 +12,7 @@ require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
 
-module SensorsAdminPanel
+module IcsAdminPanel
   class Application < Rails::Application
     
     config.time_zone = 'Chennai'
